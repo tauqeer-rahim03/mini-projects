@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Digital Clock</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .time {
+                font-family: Courier New;
+                font-size: 300%;
+            }
+            .hours {
+                font-size: 300%;
+                font-weight: 400;
+            }
+            .minutes {
+                font-size: 200%;
+                font-weight: 300;
+            }
+            .seconds {
+                font-size: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="time"></div>
+    </body>
+    <script>
+        let timeHTML = "";
+        setInterval(() => {
+            const hours = dayjs().hour();
+            const minutes = dayjs().minute();
+            const seconds = dayjs().second();
+            timeHTML = `
+            <div><span class='hours'>${hours}</span>:<span class='minutes'>${minutes}</span>:<span class='seconds'>${seconds}s</span></div>`;
+            document.querySelector(".time").innerHTML = timeHTML;
+        }, 1000);
+    </script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/dayjs@1.11.13/dayjs.min.js
+    "></script>
+</html>
