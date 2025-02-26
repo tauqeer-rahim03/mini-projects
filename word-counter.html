@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Word Counter</title>
+    </head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .input-area {
+            width: 480px;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            outline: none;
+        }
+
+        .info-box {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .word-count,
+        .char-count {
+            background: #e3e3e3;
+            padding: 10px;
+            border-radius: 5px;
+            flex: 1;
+            margin: 5px;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <h1>Word Counter</h1>
+            <h3>Enter a text below</h3>
+            <textarea class="input-area" id="input-area"></textarea>
+            <div class="info-box">
+                <div class="word-count" id="word-count">Word Count: 0</div>
+                <div class="char-count" id="char-count">Character Count: 0</div>
+            </div>
+        </div>
+    </body>
+    <script>
+        document.getElementById("input-area").addEventListener("input", () => {
+            const text = document.getElementById("input-area").value.trim();
+            let words = text.match(/\b\w+\b/g);
+            let wordCount = words ? words.length : 0;
+
+            document.getElementById(
+                "word-count"
+            ).innerHTML = `Word Count: ${wordCount}`;
+            document.getElementById(
+                "char-count"
+            ).innerHTML = `Character Count: ${text.length}`;
+        });
+    </script>
+</html>
