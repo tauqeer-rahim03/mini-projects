@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign-in</title>
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 70vh;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: rgb(83, 83, 83);
+            }
+            .sign-in {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                background-color: rgb(31, 31, 31);
+                padding: 30px;
+            }
+            h1 {
+                color: red;
+                margin-top: 0;
+            }
+            .other-options {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 400px;
+                margin-bottom: 20px;
+            }
+
+            input {
+                margin-bottom: 20px;
+                height: 40px;
+                width: 400px;
+                background-color: rgb(61, 61, 61);
+                border: none;
+                padding: 4px;
+                color: white;
+                outline: none;
+                font-size: 16px;
+            }
+            button {
+                background-color: red;
+                border: none;
+                cursor: pointer;
+                width: 400px;
+                padding: 10px;
+                font-size: larger;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="sign-in">
+            <h1>SIGN IN</h1>
+            <input type="text" placeholder="Username" />
+            <input type="password" placeholder="Password" />
+            <div class="other-options">
+                <div style="color: white">Forget Password</div>
+                <div style="color: red">Signup</div>
+            </div>
+            <button>Login</button>
+        </div>
+    </body>
+</html>
