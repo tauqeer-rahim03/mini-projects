@@ -2,48 +2,12 @@
 <html lang="en">
     <head>
         <title>Digital Clock</title>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-            .time {
-                font-family: Courier New;
-                font-size: 300%;
-            }
-            .hours {
-                font-size: 300%;
-                font-weight: 400;
-            }
-            .minutes {
-                font-size: 200%;
-                font-weight: 300;
-            }
-            .seconds {
-                font-size: 100%;
-            }
-        </style>
+        <link rel="stylesheet" href="style/digital-clock.css" />
     </head>
     <body>
         <div class="time"></div>
     </body>
-    <script>
-        let timeHTML = "";
-        setInterval(() => {
-            const hours = dayjs().hour();
-            const minutes = dayjs().minute();
-            const seconds = dayjs().second();
-
-            const stringHours = String(hours).padStart(2, "0");
-            const stringSeconds = String(seconds).padStart(2, "0");
-            const stringMinutes = String(minutes).padStart(2, "0");
-            timeHTML = `
-            <div><span class='hours'>${stringHours}</span>:<span class='minutes'>${stringMinutes}</span>:<span class='seconds'>${stringSeconds}s</span></div>`;
-            document.querySelector(".time").innerHTML = timeHTML;
-        }, 1000);
-    </script>
+    <script src="script/digital-clock.js"></script>
     <script src="
     https://cdn.jsdelivr.net/npm/dayjs@1.11.13/dayjs.min.js
     "></script>

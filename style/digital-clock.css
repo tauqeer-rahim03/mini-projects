@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.time {
+    font-family: Courier New;
+    font-size: 300%;
+}
+.hours {
+    font-size: 300%;
+    font-weight: 400;
+}
+.minutes {
+    font-size: 200%;
+    font-weight: 300;
+}
+.seconds {
+    font-size: 100%;
+}

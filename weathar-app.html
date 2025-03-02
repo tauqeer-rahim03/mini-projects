@@ -2,54 +2,7 @@
 <html >
     <head>
         <title>Weather app</title>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 90vh;
-                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                background-color: rgb(194, 240, 255);
-                transition: all 0.3s;
-            }
-            .weather-card{
-                background-color: white;
-                border-radius: 10px;
-                border: none;
-                box-shadow: 0 0 10px rgba(0,0,0,0.8);
-                text-align: center;
-                padding: 20px;
-                align-items: center;
-                font-size: larger;
-                width: 300px;
-                display: flex;
-                flex-direction: column;
-            }
-            .city-name {
-                border: none;
-                align-items: baseline;
-                margin: 2px;
-                border-bottom: 1px solid;
-                outline: none;
-                width: 120px;
-                border-radius: 0;
-                font-size: x-large;
-                font-weight: bold;
-                align-items: center;
-            }
-            .temperature{
-                font-size: 50px;
-                font-weight: bold;
-            }
-            .icon{
-                height: 100px;
-                margin: 0px;
-            }
-            .description{
-                margin-bottom: 10px;
-
-            }
-        </style>
+        <link rel="stylesheet" href="style/weather-app.css">
     </head>
     <body>
         <div class="weather-card">
@@ -63,38 +16,5 @@
             <div id="min-max"></div>
         </div>
     </body>
-    <script>
-       let city = 'Bangalore';
-
-        async function loadPage(){
-            const apiKey = "bd9bbf54fca117545f46f9b1f228b4cb";
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-            await fetch(url)
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    console.log(data);
-                    document.getElementById("description").innerHTML = `its ${data.weather[0].description}`;
-
-                    const iconURL = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-                    document.getElementById("icon").src = iconURL;
-                    document.getElementById('temperature').innerHTML= Math.round (data.main.temp/10)+'°C'
-                    document.getElementById('min-max').innerHTML=  `${Math.round(data.main.temp_max/10)}/${Math.round(data.main.temp_min/10)} °C`
-                }).catch((error)=>{
-                    document.getElementById('description').innerHTML="Error loading weather data"
-                })
-        }
-        loadPage()
-        document.getElementById('city-name').addEventListener('keydown',(event)=>{
-            if(event.key==='Enter'){
-                event.preventDefault()
-                city=document.getElementById('city-name').value;
-                document.ge
-                loadPage()
-                
-                return city
-            }
-        })
-    </script>
+    <script src="script/weather-app.js"></script>
 </html>

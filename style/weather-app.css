@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    background-color: rgb(194, 240, 255);
+    transition: all 0.3s;
+}
+.weather-card {
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 20px;
+    align-items: center;
+    font-size: larger;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.city-name {
+    border: none;
+    align-items: baseline;
+    margin: 2px;
+    border-bottom: 1px solid;
+    outline: none;
+    width: 120px;
+    border-radius: 0;
+    font-size: x-large;
+    font-weight: bold;
+    align-items: center;
+}
+.temperature {
+    font-size: 50px;
+    font-weight: bold;
+}
+.icon {
+    height: 100px;
+    margin: 0px;
+}
+.description {
+    margin-bottom: 10px;
+}
