@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stopwatch</title>
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                background-color: cornsilk;
+                font-family: "Trebuchet MS", "Lucida Sans Unicode",
+                    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+            }
+            .card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: blanchedalmond;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            }
+
+            .display {
+                font-size: xx-large;
+                margin-top: auto;
+                color: red;
+            }
+
+            .reset,
+            .start {
+                border: none;
+                background-color: black;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 16px;
+                font-size: large;
+                cursor: pointer;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+                font-family: "Trebuchet MS", "Lucida Sans Unicode",
+                    "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h1 style="margin-top: auto">Stopwatch</h1>
+            <h3 class="display" id="display">00:00:00</h3>
+            <div>
+                <button class="start" id="start">Start</button>
+                <button class="reset" id="reset">Reset</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        const display = document.getElementById("display");
+        const start = document.getElementById("start");
+        const reset = document.getElementById("reset");
+
+        let startTime;
+        let running = false;
+        let elapsedTime = 0;
+        let intervalId;
+
+        function formatTime(timeInSeconds) {
+            const hours = Math.floor(timeInSeconds / 3600);
+            const minutes = Math.floor((timeInSeconds % 3600) / 60);
+            const seconds = Math.floor(timeInSeconds % 60);
+
+            const formattedHours = String(hours).padStart(2, "0");
+            const formattedMinutes = String(minutes).padStart(2, "0");
+            const formattedSeconds = String(seconds).padStart(2, "0");
+
+            return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        }
+
+        function updateDisplay() {
+            const currentTime = Math.floor(elapsedTime / 1000);
+            display.textContent = formatTime(currentTime);
+        }
+
+        start.addEventListener("click", function () {
+            if (start.innerHTML === "Start") {
+                if (!running) {
+                    startTime = Date.now() - elapsedTime;
+                    intervalId = setInterval(function () {
+                        elapsedTime = Date.now() - startTime;
+                        updateDisplay();
+                    }, 1000);
+                    running = true;
+                }
+                start.innerHTML = "Stop";
+                start.style.backgroundColor = "red";
+            } else if (start.innerHTML === "Stop") {
+                if (running) {
+                    clearInterval(intervalId);
+                    running = false;
+                    start.innerHTML = "Start";
+                    start.style.backgroundColor = "black";
+                }
+            }
+        });
+
+        reset.addEventListener("click", function () {
+            clearInterval(intervalId);
+            running = false;
+            elapsedTime = 0;
+            updateDisplay();
+            start.innerHTML = "Start";
+            start.style.backgroundColor = "black";
+        });
+    </script>
+</html>
